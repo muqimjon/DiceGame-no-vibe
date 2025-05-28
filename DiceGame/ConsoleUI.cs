@@ -96,7 +96,7 @@ public class ConsoleUI
                 ShowProbabilityTable();
                 continue;
             }
-            if (!int.TryParse(input, out int value) && value < dices.Count)
+            if (!int.TryParse(input, out int value) || value >= dices.Count)
             {
                 ShowInvalid("Invalid selection. Please choose one of the listed options.");
                 continue;

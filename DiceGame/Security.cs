@@ -27,17 +27,7 @@ public class Security
         => value;
 
     private static int GenerateRandomValue(int max)
-    {
-        using var rng = RandomNumberGenerator.Create();
-        var buffer = new byte[4];
-        int result;
-        do
-        {
-            rng.GetBytes(buffer);
-            result = BitConverter.ToInt32(buffer, 0) & int.MaxValue;
-        } while (result >= int.MaxValue - int.MaxValue % max);
-        return result % max;
-    }
+        => RandomNumberGenerator.GetInt32(0, max);
 
     private byte[] NewMethod()
     {
