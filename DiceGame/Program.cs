@@ -1,3 +1,3 @@
 ﻿using DiceGame;
 
-new Engine(args);
+new Engine().Play(args);

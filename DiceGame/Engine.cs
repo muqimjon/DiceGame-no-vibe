@@ -3,19 +3,16 @@ namespace DiceGame;
 
 public class Engine
 {
-    private readonly ConsoleUI ui;
+    private readonly ConsoleUI ui = new();
 
-    public Engine(string[] args)
+    public void Play(string[] args)
     {
-
         var dices = ParseDiceArguments(args);
-        ui = new(dices);
+        ui.Dices = dices;
         var userFirst = DetermineWhoStarts();
         var (userDice, computerDice) = SelectDice(dices, userFirst);
-
         var userRoll = Roll(userDice, "Your");
         var computerRoll = Roll(computerDice, "My");
-
         ui.ShowGameResult(userRoll, computerRoll);
     }
 

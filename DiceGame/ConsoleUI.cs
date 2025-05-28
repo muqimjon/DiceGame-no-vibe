@@ -2,8 +2,9 @@
 
 namespace DiceGame;
 
-public class ConsoleUI(List<Dice> Dices)
+public class ConsoleUI
 {
+    public List<Dice>? Dices { get; set; }
     public int ShowGuessPrompt(int max, string hmac)
     {
         Console.WriteLine("Let's determine who makes the first move.\n" +
@@ -146,12 +147,14 @@ public class ConsoleUI(List<Dice> Dices)
 
     public void ShowDiceError(string rawInput)
     {
-        throw new ArgumentException($"❌ Invalid dice format: '{rawInput}'. Expected format: 2,2,4,4,9,9");
+        ShowInvalid($"Invalid dice format: {rawInput}. Expected format: 2,2,4,4,9,9");
+        Environment.Exit(1);
     }
 
     public void ShowDiceCountError()
     {
-        throw new ArgumentException("❌ At least 3 valid dice are required.");
+        ShowInvalid("At least 3 valid dice are required.");
+        Environment.Exit(1);
     }
 
     private void ShowInvalid(string message)
