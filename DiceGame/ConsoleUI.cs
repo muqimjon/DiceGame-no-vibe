@@ -139,11 +139,7 @@ public class ConsoleUI
     }
 
     private void DisplayNavigation()
-    {
-        Console.WriteLine("X - exit");
-        Console.WriteLine("? - help");
-        Console.Write("Your selection: ");
-    }
+        => Console.WriteLine("X - exit\n? - help\nYour selection: ");
 
     public void ShowDiceError(string rawInput)
     {

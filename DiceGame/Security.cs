@@ -17,14 +17,15 @@ public class Security
         hmac = ComputeSha3WithKeyAndValue(value, key);
     }
 
-    public string GetHmac()
-        => Convert.ToHexString(hmac).ToUpperInvariant();
+    public string GetHmac() => ToHex(hmac);
 
-    public string GetKey()
-        => Convert.ToHexString(key).ToUpperInvariant();
+    public string GetKey() => ToHex(key);
 
     public int GetValue()
         => value;
+
+    private static string ToHex(byte[] bytes) 
+        => Convert.ToHexString(bytes).ToUpperInvariant();
 
     private static int GenerateRandomValue(int max)
         => RandomNumberGenerator.GetInt32(0, max);
