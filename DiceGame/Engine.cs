@@ -23,7 +23,8 @@ public class Engine
     {
         CheckIsValidDiceArguments(args);
         return [.. args.Select(arg
-            => new Dice([.. arg.Split(",").Select(int.Parse)]))];
+            => new Dice([.. arg.Split(",", StringSplitOptions.RemoveEmptyEntries)
+            .Select(int.Parse)]))];
     }
 
     private bool DetermineWhoStarts()
