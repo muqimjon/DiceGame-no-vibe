@@ -14,7 +14,7 @@ public class Security
     {
         value = GenerateRandomValue(max);
         key = GenerateKey();
-        hmac = NewMethod();
+        hmac = ComputeSha3WithKeyAndValue(value, key);
     }
 
     public string GetHmac()
@@ -29,7 +29,7 @@ public class Security
     private static int GenerateRandomValue(int max)
         => RandomNumberGenerator.GetInt32(0, max);
 
-    private byte[] NewMethod()
+    private static byte[] ComputeSha3WithKeyAndValue(int value, byte[] key)
     {
         var message = Encoding.UTF8.GetBytes(value.ToString());
         var input = key.Concat(message).ToArray();
